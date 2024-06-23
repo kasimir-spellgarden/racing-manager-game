@@ -17,5 +17,14 @@ if($res->num_rows == 0)
 
 $user = $res->fetch_assoc();
 
+$st = $mysqli->prepare("SELECT * FROM UserCompanies WHERE UserID = ?");
+$st->bind_param("i", $user['ID']);
+$st->execute();
+$res = $st->get_result();
+$user["Companies"] = array();
+while($company = $res->fetch_assoc())
+{
+	$user["Companies"][] = $company;
+}
 SendToGame($user);
 ?>
