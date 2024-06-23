@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Allow access to existing files and directories, including handling file uploads
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirect all other requests to index.php and pass the URL path as a query parameter
+    RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
+</IfModule>
