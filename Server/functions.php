@@ -23,7 +23,7 @@ function SendToGame($data)
 }
 
 function FailMsg($code, $msg) {
-	echo SendToGame(array("Status" => "ERR", "Code" => $code, "Message" => $msg));
+	echo SendToGame(array("Status" => "ERR", "Code" => $code, "Message" => $msg, "Request" => $_REQUEST));
 }
 
 function CheckRequest(... $needed)
