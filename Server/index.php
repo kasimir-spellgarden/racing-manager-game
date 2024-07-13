@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 $IAmServer = true;
 
+require_once "settings.php";
 require_once "functions.php";
 
 if(!isset($_POST["version"]))
@@ -45,7 +46,8 @@ switch($Game["Request"][0])
 		exit;	
 	case "User":
 		require_once "user/main.php";
-		exit;	
+	case "Team":
+		require_once "team/main.php";
 }
 
 FailMsg("UNKNOWN_COMMAND_01", "Request is unknown.");
